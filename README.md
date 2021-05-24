@@ -31,4 +31,7 @@ AsynImageLoader is available through Swift Package Manager.
 Go to File -> Swift Packages -> Add Package Dependency 
 
 Enter the url of this repo and Xcode will choose the current version and link it to your project.
+
+![Screenshot 2021-05-24 at 12 56 10 PM](https://user-images.githubusercontent.com/81283951/119312173-a3d62e00-bc8f-11eb-9368-63f473044a04.png)
+
  

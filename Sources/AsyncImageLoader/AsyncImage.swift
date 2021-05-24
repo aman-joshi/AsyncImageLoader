@@ -13,17 +13,26 @@ public struct AsyncImage: View {
   @ObservedObject private var imageLoader = ImageLoader()
 
   var placeholder: Image
+  var showProgress:Bool
 
-  public init(url: String, placeholder: Image = Image(systemName: "photo")) {
+  public init(url: String, placeholder: Image = Image(systemName: "photo"),showProgress:Bool = false) {
     self.placeholder = placeholder
+    self.showProgress = showProgress
     self.imageLoader.load(url: url)
   }
 
-    public var body: some View {
-      if let uiImage = self.imageLoader.downloadedImage {
-        return Image(uiImage: uiImage).resizable()
-      } else {
-        return placeholder.resizable()
+  public var body: some View {
+    if let uiImage = self.imageLoader.downloadedImage {
+      Image(uiImage: uiImage).resizable()
+    }else {
+      if showProgress {
+        ZStack(alignment: .center) {
+          placeholder.resizable().blur(radius: 3)
+          ActivityIndicator(style: .large)
+        }
+      }else {
+        placeholder.resizable()
       }
     }
+  }
 }
